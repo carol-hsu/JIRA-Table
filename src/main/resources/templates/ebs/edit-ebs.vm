@@ -1,7 +1,6 @@
 #customControlHeader ($action $customField.id $customField.name $fieldLayoutItem.required $displayParameters $auiparams)
 
 #set ( $EBScols = "type,mount,size,vtype,iops,terminate,encrypted")
-
 <script>
 	 tableMonitor("$customField.id","$EBScols");
 </script>
