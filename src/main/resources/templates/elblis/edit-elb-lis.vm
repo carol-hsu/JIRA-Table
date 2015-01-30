@@ -1,0 +1,32 @@
+#customControlHeader ($action $customField.id $customField.name $fieldLayoutItem.required $displayParameters $auiparams)
+
+#set ( $ELBLIScols = "elbproto,elbport,instproto,instport,oldssl,newssl")
+	
+<script>
+	 tableMonitor("$customField.id","$ELBLIScols");
+</script>
+
+<table id="edit-$customField.id" class="TableStyle" style="width:100%">
+	<tr class="bar">
+		<td>#</td>
+		<td>ELB protocol</td>
+		<td>ELB port</td>
+		<td>Instance protocal</td> 
+		<td>Instance port</td>
+		<td>Use existing SSL certification</td>
+		<td>Use new SSL certification</td>
+		<td>Selected</td>
+	</tr>
+</table>
+
+<button type="button" id="add_button-$customField.id" onclick='ELBLISrowAdd("$customField.id")'>add</button>
+<button type="button" id="del_button-$customField.id" onclick='rowDel("$customField.id", "$ELBLIScols")'>delete</button>
+<button type="button" id="copy_button-$customField.id" onclick='rowCopy("$customField.id", "$ELBLIScols")'>copy</button>
+<br>
+<input id="result-$customField.id" type="hidden" name="$customField.id" value="$textutils.htmlEncode($!value)"/>
+
+<script type="text/javascript">
+	ELBLIStableBuild("$value","$customField.id");
+</script>
+
+#customControlFooter ($action $customField.id $fieldLayoutItem.fieldDescription $displayParameters $auiparams)

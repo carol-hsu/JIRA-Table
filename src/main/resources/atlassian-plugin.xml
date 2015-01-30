@@ -1,0 +1,62 @@
+<atlassian-plugin key="${project.groupId}.${project.artifactId}" name="${project.name}" plugins-version="2">
+    <plugin-info>
+        <description>${project.description}</description>
+        <version>${project.version}</version>
+        <vendor name="${project.organization.name}" url="${project.organization.url}" />
+        <param name="plugin-icon">images/pluginIcon.png</param>
+        <param name="plugin-logo">images/pluginLogo.png</param>
+    </plugin-info>
+
+    <!-- add our i18n resource -->
+    <resource type="i18n" name="i18n" location="CustomField-Table"/>
+   
+    <!-- add our web resources -->
+    <web-resource key="CustomField-Table-resources" name="CustomField-Table Web Resources">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+        <dependency>confluence.web.resources:ajs</dependency>
+        <resource type="download" name="CustomField-Table.css" location="/css/CustomField-Table.css"/>
+        <resource type="download" name="TableManager.js" location="/js/TableManager.js"/>
+        <resource type="download" name="TableShowup.js" location="/js/TableShowup.js"/>
+        <resource type="download" name="json2.js" location="/js/json2.js"/>
+		<context>alt.general</context>
+       	<!-- <context>AWS-CustomField-Table</context>-->
+    </web-resource>
+    
+	<!-- import from the product container -->
+    <component-import key="applicationProperties" interface="com.atlassian.sal.api.ApplicationProperties" />
+	<customfield-type key="ebs-table-field" name="AWS EBS table" class="TrendMicro.DCS.JIRA.CustomFields.Table.AwsTable">
+    	<description>A table field for AWS EBS configuration</description>
+    	<resource type="velocity" name="view" location="/templates/ebs/view-ebs.vm"/>
+		<resource type="velocity" name="edit" location="/templates/ebs/edit-ebs.vm"/>
+    </customfield-type>    
+    <customfield-type key="ec2-table-field" name="AWS EC2 table" class="TrendMicro.DCS.JIRA.CustomFields.Table.AwsTable">
+    	<description>A table field for AWS EC2 configuration</description>
+    	<resource type="velocity" name="view" location="/templates/ec2/view-ec2.vm"/>
+		<resource type="velocity" name="edit" location="/templates/ec2/edit-ec2.vm"/>
+    </customfield-type>
+    <customfield-type key="elb-lis-table-field" name="AWS ELB listener table" class="TrendMicro.DCS.JIRA.CustomFields.Table.AwsTable">
+    	<description>A table field for AWS ELB listener configuration</description>
+    	<resource type="velocity" name="view" location="/templates/elblis/view-elb-lis.vm"/>
+		<resource type="velocity" name="edit" location="/templates/elblis/edit-elb-lis.vm"/>
+    </customfield-type>
+    <customfield-type key="elb-table-field" name="AWS ELB table" class="TrendMicro.DCS.JIRA.CustomFields.Table.AwsTable">
+    	<description>A table field for AWS ELB configuration</description>
+    	<resource type="velocity" name="view" location="/templates/elb/view-elb.vm"/>
+		<resource type="velocity" name="edit" location="/templates/elb/edit-elb.vm"/>
+    </customfield-type>
+    <customfield-type key="sg-table-field" name="AWS Security Group table" class="TrendMicro.DCS.JIRA.CustomFields.Table.AwsTable">
+    	<description>A table field for AWS Security Group configuration</description>
+    	<resource type="velocity" name="view" location="/templates/sg/view-sg.vm"/>
+		<resource type="velocity" name="edit" location="/templates/sg/edit-sg.vm"/>
+    </customfield-type>
+    <customfield-type key="subnet-table-field" name="AWS Subnet table" class="TrendMicro.DCS.JIRA.CustomFields.Table.AwsTable">
+    	<description>A table field for AWS Subnet configuration</description>
+    	<resource type="velocity" name="view" location="/templates/subnet/view-subnet.vm"/>
+		<resource type="velocity" name="edit" location="/templates/subnet/edit-subnet.vm"/>
+    </customfield-type>
+    <customfield-type key="keyvalue-table-field" name="AWS PS key-value table" class="TrendMicro.DCS.JIRA.CustomFields.Table.AwsTable">
+    	<description>A table field for AWS PS Key-Value settings</description>
+    	<resource type="velocity" name="view" location="/templates/keyvalue/view-keyvalue.vm"/>
+		<resource type="velocity" name="edit" location="/templates/keyvalue/edit-keyvalue.vm"/>
+    </customfield-type>
+</atlassian-plugin>

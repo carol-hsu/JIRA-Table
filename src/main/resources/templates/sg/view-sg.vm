@@ -1,0 +1,22 @@
+<table id="view-$customField.id" class="TableStyle" style="width:100%">
+	<tr class="bar">
+		<td>#</td>
+		<td>Name</td>
+        <td>Description</td>
+        <td>Rule</td>
+        <td>Protocal</td>
+        <td>Port range start</td>
+        <td>Port range end</td>
+        <td>Source/Destination</td>
+        <td>ID</td>	
+	</tr>
+</table>
+
+#if ($value)
+	<script type="text/javascript">
+		var tableObj = document.getElementById("view-$customField.id");
+		if ( tableObj.rows.length <=1 ){
+   			SGtableShow("$value","$customField.id");
+   		}
+	</script>
+#end

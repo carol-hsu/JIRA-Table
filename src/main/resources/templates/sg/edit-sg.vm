@@ -1,0 +1,34 @@
+#customControlHeader ($action $customField.id $customField.name $fieldLayoutItem.required $displayParameters $auiparams)
+
+#set ( $SGcols = "name,des,rule,protocal,fport,eport,sd,sgid" )
+	
+<script>
+	 tableMonitor("$customField.id","$SGcols");
+</script>
+
+<table id="edit-$customField.id" class="TableStyle" style="width:100%">
+	<tr class="bar">
+		<td>#</td>
+		<td>Name</td>
+		<td>Description</td>
+		<td>Rule</td>
+		<td>Protocal</td>
+		<td>Port range start</td>
+		<td>Port range end</td>
+		<td>Source/Destination</td>
+		<td>ID</td>
+		<td>Selected</td>
+	</tr>
+</table>
+
+<button type="button" id="add_button-$customField.id" onclick='SGrowAdd("$customField.id")'>add</button>
+<button type="button" id="del_button-$customField.id" onclick='rowDel("$customField.id", "$SGcols")'>delete</button>
+<button type="button" id="copy_button-$customField.id" onclick='rowCopy("$customField.id", "$SGcols")'>copy</button>
+<br>
+<input id="result-$customField.id" type="hidden" name="$customField.id" value="$textutils.htmlEncode($!value)"/>
+
+<script type="text/javascript">
+	SGtableBuild("$value","$customField.id"); 			
+</script>
+
+#customControlFooter ($action $customField.id $fieldLayoutItem.fieldDescription $displayParameters $auiparams)

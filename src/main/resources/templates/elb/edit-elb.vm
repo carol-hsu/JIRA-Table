@@ -1,0 +1,37 @@
+#customControlHeader ($action $customField.id $customField.name $fieldLayoutItem.required $displayParameters $auiparams)
+
+#set ( $ELBcols = "name,ec2,sg,scheme,ebslis,proto,port,path,timeout,interval,health,unhealth" )
+<script>
+	 tableMonitor("$customField.id","$ELBcols");
+</script>
+
+<table id="edit-$customField.id" class="TableStyle" style="width:100%">
+	<tr class="bar">
+		<td>#</td>
+		<td>Name</td>
+		<td>EC2 groups</td>
+		<td>Security group IDs</td>
+		<td>Scheme</td>
+		<td>Listeners</td>
+		<td>Protocol</td>
+		<td>Port</td>
+		<td>Path</td>
+		<td>Timeout</td>
+		<td>Interval</td>
+		<td>Healthy threshold</td>
+		<td>Unhealthy threshold</td>
+		<td>Selected</td>
+	</tr>
+</table>
+
+<button type="button" id="add_button-$customField.id" onclick='ELBrowAdd("$customField.id")'>add</button>
+<button type="button" id="del_button-$customField.id" onclick='rowDel("$customField.id", "$ELBcols")'>delete</button>
+<button type="button" id="copy_button-$customField.id" onclick='rowCopy("$customField.id", "$ELBcols")'>copy</button>
+<br>
+<input id="result-$customField.id" type="hidden" name="$customField.id" value=""$textutils.htmlEncode($!value)"/>
+
+<script type="text/javascript">
+	ELBtableBuild("$value","$customField.id");	
+</script>
+
+#customControlFooter ($action $customField.id $fieldLayoutItem.fieldDescription $displayParameters $auiparams)

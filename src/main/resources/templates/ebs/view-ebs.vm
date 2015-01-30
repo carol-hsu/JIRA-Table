@@ -1,0 +1,21 @@
+<table class="TableStyle" id="view-$customField.id" style="width:100%">
+    <tr class="bar">
+        <td>#</td>
+        <td>Type</td>
+        <td>Mount point</td>
+        <td>Size(GB)</td>
+        <td>Volume type</td>
+        <td>IOPS value</td>
+        <td>Delete on Termination?</td>
+        <td>Encrypted?</td>
+    </tr>
+</table>
+
+#if ($value)
+	<script type="text/javascript">
+		var tableObj = document.getElementById("view-$customField.id");
+		if ( tableObj.rows.length <=1 ){
+   			EBStableShow("$value", "$customField.id");
+   		}
+	</script>
+#end

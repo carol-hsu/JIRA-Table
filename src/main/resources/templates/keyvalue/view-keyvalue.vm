@@ -1,0 +1,16 @@
+<table id="view-$customField.id" class="TableStyle" style="width:100%">
+	<tr class="bar">
+		<td>#</td>
+        <td>Key</td>
+        <td>Value</td>
+	</tr>
+</table>
+
+#if ($value)
+	<script type="text/javascript">
+		var tableObj = document.getElementById("view-$customField.id");
+		if ( tableObj.rows.length <=1 ){
+   			KVtableShow("$value","$customField.id");
+   		}
+	</script>
+#end

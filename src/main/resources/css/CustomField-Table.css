@@ -1,0 +1,10 @@
+.TableStyle {
+	border: 1px solid black;
+	border-collapse: collapse;
+    font-size: 11px;
+    text-align: center;
+}
+.bar {background-color: #29297A; color: #FFFFFF;}
+.num {background-color: #E6E6FF;}
+.even-num {background-color: #BDBDFF;}
+.even {background-color: #ECECFF;}

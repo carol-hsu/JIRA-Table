@@ -1,0 +1,38 @@
+#customControlHeader ($action $customField.id $customField.name $fieldLayoutItem.required $displayParameters $auiparams)
+
+#set ( $EC2cols = "name,number,ami,type,keyname,publicip,subnet,sg,nat,ebs,userdata" )
+
+<script>
+	 tableMonitor("$customField.id","$EC2cols");
+</script>
+
+	
+<table id="edit-$customField.id" class="TableStyle" style="width:100%">
+	<tr class="bar">
+		<td>#</td>
+   		<td>Name</td>
+   		<td># of instances</td> 
+		<td>AMI</td>
+		<td>Instance class</td>
+		<td>KeyName</td>
+		<td>Public IP conf</td>
+		<td>Subnet ID</td>
+		<td>Security Group IDs</td>
+		<td>NAT conf</td>
+		<td>EBS devices</td>
+		<td>Userdata</td>
+		<td>Selected</td>
+	</tr>
+</table>
+
+<button type="button" id="add_button-$customField.id" onclick='EC2rowAdd("$customField.id")'>add</button>
+<button type="button" id="del_button-$customField.id" onclick='rowDel("$customField.id","$EC2cols")'>delete</button>
+<button type="button" id="copy_button-$customField.id" onclick='rowCopy("$customField.id","$EC2cols")'>copy</button>
+<br>
+<input id="result-$customField.id" type="hidden" name="$customField.id" value="$textutils.htmlEncode($!value)"/>
+	
+<script type="text/javascript">
+	EC2tableBuild("$value","$customField.id");
+</script>
+
+#customControlFooter ($action $customField.id $fieldLayoutItem.fieldDescription $displayParameters $auiparams)

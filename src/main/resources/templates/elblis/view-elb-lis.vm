@@ -1,0 +1,20 @@
+<table id="view-$customField.id" class="TableStyle" style="width:100%">
+	<tr class="bar">
+		<td>#</td>
+		<td>ELB protocol</td>
+		<td>ELB port</td>
+		<td>Instance protocal</td>
+		<td>Instance port</td>
+		<td>Use existing SSL certification</td>
+		<td>Use new SSL certification</td>	
+	</tr>
+</table>
+
+#if ($value)
+	<script type="text/javascript">
+		var tableObj = document.getElementById("view-$customField.id");
+		if ( tableObj.rows.length <=1 ){
+   			ELBLIStableShow("$value","$customField.id");
+   		}
+	</script>
+#end

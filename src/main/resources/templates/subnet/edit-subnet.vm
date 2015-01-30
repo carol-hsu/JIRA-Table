@@ -1,0 +1,31 @@
+#customControlHeader ($action $customField.id $customField.name $fieldLayoutItem.required $displayParameters $auiparams)
+
+#set ( $SUBNETcols = "name,az,cidr,type,id" )
+		
+<script>
+	 tableMonitor("$customField.id","$SUBNETcols");
+</script>
+	
+<table id="edit-$customField.id" class="TableStyle" style="width:100%">
+	<tr class="bar">
+		<td>#</td>
+    	<td>Name</td>
+    	<td>Availability zone</td>
+    	<td>CIDR block</td>
+    	<td>Type</td>
+    	<td>ID</td>
+		<td>Selected</td>
+	</tr>
+</table>
+	
+<button type="button" id="add_button-$customField.id" onclick='SUBNETrowAdd("$customField.id")'>add</button>
+<button type="button" id="del_button-$customField.id" onclick='rowDel("$customField.id", "$SUBNETcols")'>delete</button>
+<button type="button" id="copy_button-$customField.id" onclick='rowCopy("$customField.id", "$SUBNETcols")'>copy</button>
+<br>
+<input id="result-$customField.id" type="hidden" name="$customField.id" value="$textutils.htmlEncode($!value)"/>
+	
+<script type="text/javascript">
+	SUBNETtableBuild("$value","$customField.id");	
+</script>
+
+#customControlFooter ($action $customField.id $fieldLayoutItem.fieldDescription $displayParameters $auiparams)

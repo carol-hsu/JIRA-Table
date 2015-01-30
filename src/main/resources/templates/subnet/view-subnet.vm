@@ -1,0 +1,19 @@
+<table id="view-$customField.id" class="TableStyle" style="width:100%">
+	<tr class="bar">
+		<td>#</td>
+		<td>Name</td>
+		<td>Availability zone</td>
+        <td>CIDR block</td>
+        <td>Type</td>
+        <td>ID</td>
+	</tr>
+</table>
+
+#if ($value)
+	<script type="text/javascript">
+		var tableObj = document.getElementById("view-$customField.id");
+		if ( tableObj.rows.length <=1 ){
+   			SUBNETtableShow("$value","$customField.id");
+   		}
+	</script>
+#end

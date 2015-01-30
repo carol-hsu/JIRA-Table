@@ -1,0 +1,28 @@
+#customControlHeader ($action $customField.id $customField.name $fieldLayoutItem.required $displayParameters $auiparams)
+
+#set ( $KVcols = "key,value" )
+	
+<script>
+	tableMonitor("$customField.id","$KVcols");
+</script>
+	
+	<table id="edit-$customField.id" class="TableStyle" style="width:100%">
+		<tr class="bar">
+			<td>#</td>
+    		<td>Key</td>
+    		<td>Value</td>
+			<td>Selected</td>
+		</tr>
+	</table>
+	
+	<button type="button" id="add_button-$customField.id" onclick='KVrowAdd("$customField.id")'>add</button>
+	<button type="button" id="del_button-$customField.id" onclick='rowDel("$customField.id", "$KVcols")'>delete</button>
+	<button type="button" id="copy_button-$customField.id" onclick='rowCopy("$customField.id", "$KVcols")'>copy</button>
+	<br>
+	<input id="result-$customField.id" type="hidden" name="$customField.id" value="$textutils.htmlEncode($!value)"/>
+	
+	<script type="text/javascript">
+		KVtableBuild("$value","$customField.id");
+    </script>
+
+#customControlFooter ($action $customField.id $fieldLayoutItem.fieldDescription $displayParameters $auiparams)
