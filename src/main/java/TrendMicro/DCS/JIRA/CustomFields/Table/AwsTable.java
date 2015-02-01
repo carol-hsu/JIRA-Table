@@ -29,11 +29,9 @@ import org.slf4j.LoggerFactory;
 public class AwsTable extends AbstractSingleFieldType<String> {
 
 	private static final Logger log = LoggerFactory.getLogger(AwsTable.class);
-	private final WebResourceManager webResourceManager;
 	
-    public AwsTable(WebResourceManager webResourceManager, CustomFieldValuePersister customFieldValuePersister, GenericConfigManager genericConfigManager) {
+    public AwsTable(CustomFieldValuePersister customFieldValuePersister, GenericConfigManager genericConfigManager) {
     	super(customFieldValuePersister,genericConfigManager);
-    	this.webResourceManager = webResourceManager;
     }
     
 	@Override
@@ -48,17 +46,15 @@ public class AwsTable extends AbstractSingleFieldType<String> {
 		// TODO Auto-generated method stub
 		return singularObject;
 	}
-/*	
+	
+	@Override
 	public Map getVelocityParameters(Issue issue, CustomField field, FieldLayoutItem fieldLayoutItem)
     {
         Map map = super.getVelocityParameters(issue, field, fieldLayoutItem);
-
-        final WebResourceManager webResourceManager = ComponentAccessor.getWebResourceManager();
-        webResourceManager.requireResource("jira.webresources:jira-global");
-        webResourceManager.requireResource("org.hakanai.jira.plugins.jira-order-plugin:draggable");
+        map.put("webResourceManager", ComponentAccessor.getComponentOfType(WebResourceManager.class));
         return map;
     }
-	*/
+	
 	@Override
 	protected PersistenceFieldType getDatabaseType() {
 		// TODO Auto-generated method stub

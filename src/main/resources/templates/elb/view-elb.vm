@@ -1,3 +1,5 @@
+$webResourceManager.requireResource("TrendMicro.DCS.JIRA.CustomFields.Table.CustomField-Table:CustomField-Table-resources")
+
 <table id="view-$customField.id" class="TableStyle" style="width:100%">
 	<tr class="bar">
 		<td>#</td>

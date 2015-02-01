@@ -1,4 +1,6 @@
-#customControlHeader ($action $customField.id $customField.name $fieldLayoutItem.required $displayParameters $auiparams)
+#customControlHeader ($action $customField.id $customField.name $fieldLayoutItem.required $displayParameters $auiparams $webResourceManager)
+
+$webResourceManager.requireResource("TrendMicro.DCS.JIRA.CustomFields.Table.CustomField-Table:CustomField-Table-resources")
 
 #set ( $EC2cols = "name,number,ami,type,keyname,publicip,subnet,sg,nat,ebs,userdata" )
 
@@ -35,4 +37,4 @@
 	EC2tableBuild("$value","$customField.id");
 </script>
 
-#customControlFooter ($action $customField.id $fieldLayoutItem.fieldDescription $displayParameters $auiparams)
+#customControlFooter ($action $customField.id $fieldLayoutItem.fieldDescription $displayParameters $auiparams $webResourceManager)

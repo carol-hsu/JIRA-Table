@@ -67,7 +67,7 @@ function addCell(Tr, rule){
 }
 ////////////write table's data back to DB 
 function tableResult(postfix,colStr){
-	alert("start update "+ colStr);
+	//alert("start update "+ colStr);
 	var cols = colStr.split(",");
     var table = document.getElementById("edit-"+postfix);;
     var Result ="";
@@ -88,7 +88,7 @@ function tableResult(postfix,colStr){
         document.getElementById("result-"+postfix).value = null;
     }
     
-    alert("end! with "+Result.length);
+    //alert("end! with "+Result.length);
 }
 
 ////////EBS functions
