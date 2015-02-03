@@ -1,5 +1,6 @@
 /////shared functions
 function tableMonitor(tableID,cols){
+	//alert("tableMonitor"+tableID+" "+cols);
 	AJS.$(document).ready(function(){ AJS.$("#edit-"+tableID).change(function(){
 		tableResult(tableID,cols);
 		});
@@ -67,7 +68,7 @@ function addCell(Tr, rule){
 }
 ////////////write table's data back to DB 
 function tableResult(postfix,colStr){
-	//alert("start update "+ colStr);
+	//alert("start update "+postfix+" "+ colStr);
 	var cols = colStr.split(",");
     var table = document.getElementById("edit-"+postfix);;
     var Result ="";
@@ -134,7 +135,7 @@ function EBSrowAdd(postfix){
 function EBStableBuild(tableStr, postfix){
     var cols = [ "type", "mount", "size", "vtype", "iops", "terminate", "encrypted" ];
 	var tableObj = document.getElementById("edit-"+postfix);
-	if ( tableObj == null ){
+	if ( tableObj == null || tableStr == "" ){
 		return
 	}
 	var rowArray = JSON.parse(tableStr.replace(/&quot;/g,'"'));
@@ -216,7 +217,7 @@ function EC2rowAdd(postfix){
 function EC2tableBuild(tableStr,postfix){
 	var cols=["name","number","ami","type","keyname","publicip","subnet","sg","nat","ebs","userdata"];
 	var table = document.getElementById("edit-"+postfix);
-	if (table == null){
+	if (table == null || tableStr == "" ){
 		return
 	}
 	var rowArray = JSON.parse(tableStr.replace(/&quot;/g,'"').replace(/\n/g,'@@@@@@'));
@@ -290,7 +291,7 @@ function ELBLISrowAdd(postfix){
 function ELBLIStableBuild(tableStr,postfix){
 	var cols = ["elbproto","elbport","instproto","instport","oldssl","newssl"];
 	var table = document.getElementById("edit-"+postfix);
-	if (table == null){
+	if (table == null || tableStr == ""){
 		return
 	}
 	var rowArray = JSON.parse(tableStr.replace(/&quot;/g,'"'));
@@ -352,7 +353,7 @@ function ELBrowAdd(postfix){
 function ELBtableBuild(tableStr,postfix){
 	var cols = ["name","ec2","sg","scheme","ebslis","proto","port","path","timeout","interval","health","unhealth"];	
 	var table = document.getElementById("edit-"+postfix);
-	if (table == null){
+	if (table == null || tableStr == ""){
 		return
 	}
 	var rowArray = JSON.parse(tableStr.replace(/&quot;/g,'"'));
@@ -405,7 +406,7 @@ function SUBNETtableBuild(tableStr,postfix){
 
 	var cols = ["name","az","cidr","type","id"];
 	var table = document.getElementById("edit-"+postfix);
-	if (table == null){
+	if (table == null || tableStr == "" ){
 		return
 	}
 	var rowArray = JSON.parse(tableStr.replace(/&quot;/g,'"'));
@@ -460,7 +461,7 @@ function SGtableBuild(tableStr,postfix){
 
 	var cols = ["name","des","rule","protocal","fport","eport","sd","sgid"];
 	var table = document.getElementById("edit-"+postfix);
-	if (table == null){
+	if (table == null || tableStr == ""){
 		return
 	}
 	var rowArray = JSON.parse(tableStr.replace(/&quot;/g,'"'));
@@ -495,9 +496,10 @@ function KVrowAdd(postfix){
 }
 
 function KVtableBuild(tableStr,postfix){
+	
 	var cols = ["key","value"];
 	var table = document.getElementById("edit-"+postfix);
-	if (table == null){
+	if (table == null || tableStr == ""){
 		return
 	}
 	var rowArray = JSON.parse(tableStr.replace(/&quot;/g,'"'));

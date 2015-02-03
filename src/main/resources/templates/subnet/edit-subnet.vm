@@ -2,10 +2,6 @@
 
 #set ( $SUBNETcols = "name,az,cidr,type,id" )
 		
-<script>
-	 tableMonitor("$customField.id","$SUBNETcols");
-</script>
-	
 <table id="edit-$customField.id" class="TableStyle" style="width:100%">
 	<tr class="bar">
 		<td>#</td>
@@ -22,10 +18,18 @@
 <button type="button" id="del_button-$customField.id" onclick='rowDel("$customField.id", "$SUBNETcols")'>delete</button>
 <button type="button" id="copy_button-$customField.id" onclick='rowCopy("$customField.id", "$SUBNETcols")'>copy</button>
 <br>
-<input id="result-$customField.id" type="hidden" name="$customField.id" value="$textutils.htmlEncode($!value)"/>
-	
-<script type="text/javascript">
-	SUBNETtableBuild("$value","$customField.id");	
+<input id="result-$customField.id" style="display:none" name="$customField.id" value="$textutils.htmlEncode($!value)"/>	
+<span id="SUBNETid" style="display:none">$customField.id</span>
+<span id="SUBNETvalue" style="display:none">$!value</span>
+
+<script>
+	tableMonitor("$customField.id","$SUBNETcols");
+	var tableObj = document.getElementById("edit-$customField.id");
+	if(tableObj != null){
+		if ( tableObj.rows.length <= 1 ){
+			SUBNETtableBuild("$value","$customField.id");
+		}
+	}
 </script>
 
 #customControlFooter ($action $customField.id $fieldLayoutItem.fieldDescription $displayParameters $auiparams)

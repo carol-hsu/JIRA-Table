@@ -16,10 +16,11 @@
         <resource type="download" name="CustomField-Table.css" location="/css/CustomField-Table.css"/>
         <resource type="download" name="TableManager.js" location="/js/TableManager.js"/>
         <resource type="download" name="TableShowup.js" location="/js/TableShowup.js"/>
+        <resource type="download" name="TableEdit.js" location="/js/TableEdit.js"/>
         <resource type="download" name="json2.js" location="/js/json2.js"/>
-        <!--  <context>jira.general</context>-->
+        <context>jira.general</context>
         <context>jira.create.issue</context>
-        <context>atl.dashboard</context>
+  
 	</web-resource>
     
 	<!-- import from the product container -->

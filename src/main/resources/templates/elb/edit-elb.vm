@@ -3,9 +3,6 @@
 $webResourceManager.requireResource("TrendMicro.DCS.JIRA.CustomFields.Table.CustomField-Table:CustomField-Table-resources")
 
 #set ( $ELBcols = "name,ec2,sg,scheme,ebslis,proto,port,path,timeout,interval,health,unhealth" )
-<script>
-	 tableMonitor("$customField.id","$ELBcols");
-</script>
 
 <table id="edit-$customField.id" class="TableStyle" style="width:100%">
 	<tr class="bar">
@@ -30,10 +27,18 @@ $webResourceManager.requireResource("TrendMicro.DCS.JIRA.CustomFields.Table.Cust
 <button type="button" id="del_button-$customField.id" onclick='rowDel("$customField.id", "$ELBcols")'>delete</button>
 <button type="button" id="copy_button-$customField.id" onclick='rowCopy("$customField.id", "$ELBcols")'>copy</button>
 <br>
-<input id="result-$customField.id" type="hidden" name="$customField.id" value=""$textutils.htmlEncode($!value)"/>
+<input id="result-$customField.id" style="display:none" name="$customField.id" value="$textutils.htmlEncode($!value)"/>
+<span id="ELBid" style="display:none">$customField.id</span>
+<span id="ELBvalue" style="display:none">$!value</span>
 
-<script type="text/javascript">
-	ELBtableBuild("$value","$customField.id");	
+<script>
+	tableMonitor("$customField.id","$ELBcols");
+	var tableObj = document.getElementById("edit-$customField.id");
+	if(tableObj != null){
+		if ( tableObj.rows.length <= 1 ){
+			ELBtableBuild("$value","$customField.id");
+		}
+	}
 </script>
 
 #customControlFooter ($action $customField.id $fieldLayoutItem.fieldDescription $displayParameters $auiparams $webResourceManager)

@@ -3,28 +3,33 @@
 $webResourceManager.requireResource("TrendMicro.DCS.JIRA.CustomFields.Table.CustomField-Table:CustomField-Table-resources")
 
 #set ( $KVcols = "key,value" )
+		
+<table id="edit-$customField.id" class="TableStyle" style="width:100%">
+	<tr class="bar">
+		<td>#</td>
+   		<td>Key</td>
+   		<td>Value</td>
+		<td>Selected</td>
+	</tr>
+</table>
 	
+<button type="button" id="add_button-$customField.id" onclick='KVrowAdd("$customField.id")'>add</button>
+<button type="button" id="del_button-$customField.id" onclick='rowDel("$customField.id", "$KVcols")'>delete</button>
+<button type="button" id="copy_button-$customField.id" onclick='rowCopy("$customField.id", "$KVcols")'>copy</button>
+<br>
+<input id="result-$customField.id" style="display:none" name="$customField.id" value="$textutils.htmlEncode($!value)"/>
+<span id="KVid" style="display:none">$customField.id</span>
+<span id="KVvalue" style="display:none">$!value</span>
+
 <script>
 	tableMonitor("$customField.id","$KVcols");
+	var tableObj = document.getElementById("edit-$customField.id");
+	if(tableObj != null){
+		if ( tableObj.rows.length <= 1 ){
+			KVtableBuild("$value","$customField.id");
+		}
+	}
 </script>
-	
-	<table id="edit-$customField.id" class="TableStyle" style="width:100%">
-		<tr class="bar">
-			<td>#</td>
-    		<td>Key</td>
-    		<td>Value</td>
-			<td>Selected</td>
-		</tr>
-	</table>
-	
-	<button type="button" id="add_button-$customField.id" onclick='KVrowAdd("$customField.id")'>add</button>
-	<button type="button" id="del_button-$customField.id" onclick='rowDel("$customField.id", "$KVcols")'>delete</button>
-	<button type="button" id="copy_button-$customField.id" onclick='rowCopy("$customField.id", "$KVcols")'>copy</button>
-	<br>
-	<input id="result-$customField.id" type="hidden" name="$customField.id" value="$textutils.htmlEncode($!value)"/>
-	
-	<script type="text/javascript">
-		KVtableBuild("$value","$customField.id");
-    </script>
+
 
 #customControlFooter ($action $customField.id $fieldLayoutItem.fieldDescription $displayParameters $auiparams $webResourceManager)
